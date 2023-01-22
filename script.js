@@ -1,25 +1,25 @@
-const Form = document.querySelector('form')
+const Form = document.querySelector("#form-habits")
 const nlwSetup = new NLWSetup(Form)
 const Button = document.querySelector('header button')
 
 Button.addEventListener('click', add)
-Button.addEventListener('change', save)
+Form.addEventListener("change", save)
 
 function add(){
-    const today = "01/01"
+    const today = new Date().toLocaleDateString('pt-br').slice(0, -5)
     const dayExists= nlwSetup.dayExists(today)
 
     if(dayExists){
-        alert("Este dia existe na lista!")
+        alert("Este diam já existe na lista!")
         return
     }
 
-    alert("Adiciona do com sucesso.")
+    alert("Adicionado com sucesso.")
     nlwSetup.addDay(today)
 }
 
 function save(){
-    localStorage("NLWSetup@habits", JSON.tringify(nlwSetup.data))
+    localStorage.setItem("NLWSetup@habits", JSON.tringify(nlwSetup.data))
 }
 // const data = {
 //     corrida: ['01-01', '01-02', '01-06'],
