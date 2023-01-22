@@ -1,3 +1,1 @@
 ## My README
-
-- firist one
